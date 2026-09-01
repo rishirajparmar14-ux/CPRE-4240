@@ -72,28 +72,28 @@ N = 5000
 
 for N in [N, 2 * N, 4 * N, 8 * N]:
 
-    # cost of L.pop() (remove from end)
+
     L = [random.random() for _ in range(N)]
     start = time.perf_counter()
     L.pop()
     end = time.perf_counter()
     print("N =", N, "pop() time:", end - start)
 
-    # cost of L.pop(0) (remove from front)
+    
     L = [random.random() for _ in range(N)]
     start = time.perf_counter()
     L.pop(0)
     end = time.perf_counter()
     print("N =", N, "pop(0) time:", end - start)
 
-    # in-place modification: L.reverse()
+
     L = [random.random() for _ in range(N)]
     start = time.perf_counter()
     L.reverse()
     end = time.perf_counter()
     print("N =", N, "reverse() time:", end - start)
 
-    # out-of-place: R = L[::-1]
+
     L = [random.random() for _ in range(N)]
     start = time.perf_counter()
     R = L[::-1]
