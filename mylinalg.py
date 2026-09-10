@@ -118,11 +118,6 @@ if __name__ == '__main__':
     # That makes sense because cos is an even function, so the odd powers
     # are not needed to fit it.
 
-    # Check how close p is to f at the nodes.
-    error = f - polyval(c, x)
-    print()
-    print('Biggest error at the nodes:', np.max(np.abs(error)))
-
     # Plot both curves.
     # We plot on 400 points instead of the 51 nodes so the curves look smooth.
     xs = np.linspace(-np.pi, np.pi, 400)
