@@ -27,24 +27,25 @@ def GaussElimination(A, b):
 
 
 # Least square approximation of the data {x, f} by a polynomial of degree <= n.
-# We look for p(x) = c[0]*x^n + c[1]*x^(n-1) + ... + c[n-1]*x + c[n]
-# and return the coefficients c (highest power first, same order as np.polyfit).
+# p(x) = c[0]*x^n + c[1]*x^(n-1) + ... + c[n]
+# returns the coefficients c, highest power first (same order as np.polyfit)
 def LeastSquareApprox(x, f, n):
-    x = np.array(x, dtype=float)
     f = np.array(f, dtype=float)
 
-    m = len(x)  # number of data points
-
-    # Build the m by (n+1) matrix V, one row per data point:
-    # row i is [x_i^n, x_i^(n-1), ..., x_i, 1]
-    V = np.zeros((m, n + 1))
-    for i in range(m):
+    # one row per data point, same idea as the interpolation demo but now
+    # there are more rows than unknowns
+    V = []
+    for xi in x:
+        row = []
         for j in range(n + 1):
-            V[i][j] = x[i] ** (n - j)
+            row.append(xi ** (n - j))
+        V.append(row)
+    V = np.array(V)
 
-    # The least square solution satisfies the normal equations
+    # this system is not square so we cannot solve it directly.
+    # the least square solution comes from the normal equations
     #   (V^T V) c = V^T f
-    # which is a square (n+1) by (n+1) system, so we can reuse GaussElimination.
+    # and that one is square, so GaussElimination works on it
     A = np.dot(V.T, V)
     b = np.dot(V.T, f)
 
@@ -53,53 +54,48 @@ def LeastSquareApprox(x, f, n):
     return c
 
 
-# evaluate p(x) given the coefficients from LeastSquareApprox (highest power first)
+# evaluate p at x using the coefficients from LeastSquareApprox
 def polyval(c, x):
-    x = np.array(x, dtype=float)
     n = len(c) - 1
 
-    p = np.zeros_like(x)
-    for j in range(len(c)):
+    p = 0.0
+    for j in range(n + 1):
         p = p + c[j] * x ** (n - j)
 
     return p
 
 
-# main program: approximate f(x) = cos(x) on linspace(-pi, pi, 51)
+# main program: approximate f(x) = cos(x) at the nodes linspace(-pi, pi, 51)
 # by a polynomial of degree <= 5 in the least square sense
 if __name__ == '__main__':
+    n = 5
     x = np.linspace(-np.pi, np.pi, 51)
     f = np.cos(x)
-    n = 5
 
     c = LeastSquareApprox(x, f, n)
 
-    print('Least square coefficients (highest power first):')
-    for j in range(len(c)):
-        print('  x^%d : %12.8f' % (n - j, c[j]))
+    print('Coefficients (highest power first):')
+    print(c)
 
-    print()
-    print('p(x) = %.8f*x^5 + %.8f*x^4 + %.8f*x^3 + %.8f*x^2 + %.8f*x + %.8f'
+    print('p(x) = %f*x^5 + %f*x^4 + %f*x^3 + %f*x^2 + %f*x + %f'
           % (c[0], c[1], c[2], c[3], c[4], c[5]))
 
-    # how good is the fit?
-    p = polyval(c, x)
-    error = f - p
-    print()
-    print('Largest error |f - p| at the nodes :', np.max(np.abs(error)))
-    print('Least square error ||f - p||_2     :', np.sqrt(np.sum(error ** 2)))
+    # the x^5, x^3 and x^1 coefficients come out as basically zero,
+    # which makes sense because cos is an even function
 
-    # plot f and p together. Use a finer grid for the curves so they look smooth.
+    error = f - polyval(c, x)
+    print('Biggest error at the nodes:', np.max(np.abs(error)))
+
+    # plot f and p. Use more points than the 51 nodes so the curves look smooth.
     xs = np.linspace(-np.pi, np.pi, 400)
 
-    plt.figure()
     plt.plot(xs, np.cos(xs), 'b-', label='f(x) = cos(x)')
-    plt.plot(xs, polyval(c, xs), 'r--', label='p(x), least square, degree <= 5')
-    plt.plot(x, f, 'k.', markersize=5, label='data nodes')
+    plt.plot(xs, polyval(c, xs), 'r--', label='p(x), degree 5 least square')
+    plt.plot(x, f, 'k.', label='nodes')
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title('Least square approximation of cos(x) by a degree 5 polynomial')
+    plt.title('Least square approximation of cos(x)')
     plt.legend()
     plt.grid(True)
-    plt.savefig('least_square_cos.png', dpi=150)
+    plt.savefig('least_square_cos.png')
     plt.show()
