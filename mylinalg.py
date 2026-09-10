@@ -1,3 +1,8 @@
+# mylinalg.py
+# Small linear algebra module for CPRE 4240.
+# Contains GaussElimination (from the last assignment) and LeastSquareApprox.
+# Running this file as a script fits cos(x) with a degree 5 polynomial.
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -27,66 +32,99 @@ def GaussElimination(A, b):
 
 
 # Least square approximation of the data {x, f} by a polynomial of degree <= n.
-# p(x) = c[0]*x^n + c[1]*x^(n-1) + ... + c[n]
-# returns the coefficients c, highest power first (same order as np.polyfit)
+#
+# We are looking for
+#     p(x) = c[0]*x^n + c[1]*x^(n-1) + ... + c[n-1]*x + c[n]
+# so there are n+1 unknown coefficients.
+# The function returns the list of coefficients c, highest power first
+# (this is the same order that np.polyfit uses).
 def LeastSquareApprox(x, f, n):
-    f = np.array(f, dtype=float)
+    m = len(x)  # number of data points
 
-    # one row per data point, same idea as the interpolation demo but now
-    # there are more rows than unknowns
+    # Step 1: build the matrix V.
+    # If we wanted p to pass exactly through every point we would need
+    #     V * c = f
+    # where row i of V is [x_i^n, x_i^(n-1), ..., x_i, 1].
+    # This is the same matrix as in the interpolation demo, except now there
+    # are m rows and only n+1 columns, so usually m > n+1 and the system has
+    # no exact solution. That is why we do least squares instead.
     V = []
-    for xi in x:
+    for i in range(m):
         row = []
         for j in range(n + 1):
-            row.append(xi ** (n - j))
+            power = n - j          # column j holds x to this power
+            row.append(x[i] ** power)
         V.append(row)
-    V = np.array(V)
 
-    # this system is not square so we cannot solve it directly.
-    # the least square solution comes from the normal equations
-    #   (V^T V) c = V^T f
-    # and that one is square, so GaussElimination works on it
-    A = np.dot(V.T, V)
-    b = np.dot(V.T, f)
+    # Step 2: build the normal equations.
+    # The least square solution is the solution of
+    #     (V^T V) c = (V^T f)
+    # Call the left matrix A and the right side rhs. Both are written out with
+    # loops here so it is easy to see that each entry is just a sum over all
+    # of the data points.
+    A = np.zeros((n + 1, n + 1))
+    for i in range(n + 1):
+        for j in range(n + 1):
+            total = 0.0
+            for k in range(m):
+                total = total + V[k][i] * V[k][j]   # column i dotted with column j
+            A[i][j] = total
 
-    c = GaussElimination(A, b)
+    rhs = np.zeros(n + 1)
+    for i in range(n + 1):
+        total = 0.0
+        for k in range(m):
+            total = total + V[k][i] * f[k]          # column i dotted with f
+        rhs[i] = total
+
+    # Step 3: A is square (n+1 by n+1), so we can solve it with the
+    # Gauss elimination function from the last assignment.
+    c = GaussElimination(A, rhs)
 
     return c
 
 
-# evaluate p at x using the coefficients from LeastSquareApprox
+# Evaluate p(x) using the coefficients c that LeastSquareApprox returned.
+# x can be a single number or a numpy array of numbers.
 def polyval(c, x):
-    n = len(c) - 1
+    n = len(c) - 1  # c has n+1 entries, so the highest power is n
 
     p = 0.0
     for j in range(n + 1):
-        p = p + c[j] * x ** (n - j)
+        power = n - j
+        p = p + c[j] * x ** power
 
     return p
 
 
-# main program: approximate f(x) = cos(x) at the nodes linspace(-pi, pi, 51)
-# by a polynomial of degree <= 5 in the least square sense
+# main program
+# Approximate f(x) = cos(x) at the nodes linspace(-pi, pi, 51) by a polynomial
+# of degree <= 5 in the least square sense, then plot f and p together.
 if __name__ == '__main__':
-    n = 5
-    x = np.linspace(-np.pi, np.pi, 51)
-    f = np.cos(x)
+    n = 5                                  # degree of the polynomial we want
+    x = np.linspace(-np.pi, np.pi, 51)     # the 51 nodes
+    f = np.cos(x)                          # the data values at those nodes
 
     c = LeastSquareApprox(x, f, n)
 
     print('Coefficients (highest power first):')
     print(c)
 
+    print()
     print('p(x) = %f*x^5 + %f*x^4 + %f*x^3 + %f*x^2 + %f*x + %f'
           % (c[0], c[1], c[2], c[3], c[4], c[5]))
 
-    # the x^5, x^3 and x^1 coefficients come out as basically zero,
-    # which makes sense because cos is an even function
+    # The x^5, x^3 and x^1 coefficients come out as basically zero.
+    # That makes sense because cos is an even function, so the odd powers
+    # are not needed to fit it.
 
+    # Check how close p is to f at the nodes.
     error = f - polyval(c, x)
+    print()
     print('Biggest error at the nodes:', np.max(np.abs(error)))
 
-    # plot f and p. Use more points than the 51 nodes so the curves look smooth.
+    # Plot both curves.
+    # We plot on 400 points instead of the 51 nodes so the curves look smooth.
     xs = np.linspace(-np.pi, np.pi, 400)
 
     plt.plot(xs, np.cos(xs), 'b-', label='f(x) = cos(x)')
