@@ -5,7 +5,6 @@
 #define E 2.718281828459045
 
 
-// factorial of a non-negative integer n: n! = 1 * 2 * ... * n
 long long myfactorial(int n)
 {
     long long s = 1;
@@ -16,10 +15,6 @@ long long myfactorial(int n)
     return s;
 }
 
-
-// exponent of a real number x
-// write x = x0 + z where x0 is the nearest integer, so e^x = e^x0 * e^z.
-// e^z is computed with its Taylor series (z is small, so it converges fast)
 double myexp(double x)
 {
     int terms = 30;
@@ -34,7 +29,7 @@ double myexp(double x)
         term = term * z / (k + 1);
     }
 
-    // multiply by e^x0 (divide if x0 is negative)
+    
     double ex0 = 1.0;
     for (int k = 0; k < abs(x0); k++)
     {
@@ -48,15 +43,10 @@ double myexp(double x)
     return s * ex0;
 }
 
-
-// logarithm of a real number x > 0
-// Newton's method on f(s) = e^s - x:  s = s - 1 + x * e^(-s)
 double mylog(double x)
 {
     int kmax = 100;
-
-    // starting guess: count how many times we divide (or multiply) x by e
-    // to get it between 1/e and e. This keeps Newton's method fast for big x.
+    
     double y = x;
     double s = 0.0;
     while (y > E)
