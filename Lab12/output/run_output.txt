@@ -1,0 +1,20 @@
+
+ Bisection method with a stack
+   1 - f(x) = x^3 - 3x + 1
+   2 - f(x) = cos(x) - x
+   3 - f(x) = sin(x) - x/4
+ Choose a function:  Enter interval a b:  Enter tolerance:  Enter search width h_min:  Show step-by-step trace (1 = yes, 0 = no): 
+ f(x) = x^3 - 3x + 1 on [-3, 3], tol = 1e-10, h_min = 0.1
+
+ Intervals popped:   307
+ Largest stack size: 18
+ Roots found:        3
+
+  -------------------------------------
+  | # |       x        |     f(x)      |
+  -------------------------------------
+  | 1 |  -1.8793852416 |   -3.1214e-10 |
+  | 2 |   0.3472963554 |   -8.2046e-11 |
+  | 3 |   1.5320888862 |   -1.3607e-10 |
+  -------------------------------------
+
