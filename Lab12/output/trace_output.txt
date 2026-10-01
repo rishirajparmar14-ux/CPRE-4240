@@ -1,115 +1,102 @@
 
- Bisection method with a stack
-   1 - f(x) = x^3 - 3x + 1
-   2 - f(x) = cos(x) - x
-   3 - f(x) = sin(x) - x/4
- Choose a function:  Enter interval a b:  Enter tolerance:  Enter search width h_min:  Show step-by-step trace (1 = yes, 0 = no): 
- f(x) = x^3 - 3x + 1 on [-3, 3], tol = 0.001, h_min = 0.5
+ Functions:
+ 1 - f(x) = x^3 - 3x + 1
+ 2 - f(x) = cos(x) - x
+ 3 - f(x) = sin(x) - x/4
+ Pick a function:  Enter a and b:  Enter tolerance:  Enter h_min:  Show steps? (1 = yes, 0 = no): 
+ Starting stack (top is [-3, 3]):
+ Pos   Left   Right
+ 1   -3.000000   3.000000
 
- Initial stack (top = [-3, 3]):
- -------------------------------------------------------------------------
- |Pos:|     Left:     |    Right:     |     Address:     |      Next:       |
- -------------------------------------------------------------------------
- |  1 |   -3.00000000 |    3.00000000 | 0000020C76821650 | 0000000000000000 |
- -------------------------------------------------------------------------
+ Step 1: [-3.000000, 3.000000] split, stack size = 2
+ Step 2: [-3.000000, 0.000000] split, stack size = 3
+ Step 3: [-3.000000, -1.500000] split, stack size = 4
+ Step 4: [-3.000000, -2.250000] split, stack size = 5
+ Step 5: [-3.000000, -2.625000] no root, removed
+ Step 6: [-2.625000, -2.250000] no root, removed
+ Step 7: [-2.250000, -1.500000] split, stack size = 4
+ Step 8: [-2.250000, -1.875000] split, stack size = 5
+ Step 9: [-2.250000, -2.062500] no root, removed
+ Step 10: [-2.062500, -1.875000] split, stack size = 5
+ Step 11: [-2.062500, -1.968750] no root, removed
+ Step 12: [-1.968750, -1.875000] split, stack size = 5
+ Step 13: [-1.968750, -1.921875] no root, removed
+ Step 14: [-1.921875, -1.875000] split, stack size = 5
+ Step 15: [-1.921875, -1.898438] no root, removed
+ Step 16: [-1.898438, -1.875000] split, stack size = 5
+ Step 17: [-1.898438, -1.886719] no root, removed
+ Step 18: [-1.886719, -1.875000] split, stack size = 5
+ Step 19: [-1.886719, -1.880859] no root, removed
+ Step 20: [-1.880859, -1.875000] split, stack size = 5
+ Step 21: [-1.880859, -1.877930] split, stack size = 6
+ Step 22: [-1.880859, -1.879395] no root, removed
+ Step 23: [-1.879395, -1.877930] split, stack size = 6
+ Step 24: [-1.879395, -1.878662] root found at x = -1.879028
+ Step 25: [-1.878662, -1.877930] no root, removed
+ Step 26: [-1.877930, -1.875000] no root, removed
+ Step 27: [-1.875000, -1.500000] no root, removed
+ Step 28: [-1.500000, 0.000000] split, stack size = 3
+ Step 29: [-1.500000, -0.750000] split, stack size = 4
+ Step 30: [-1.500000, -1.125000] no root, removed
+ Step 31: [-1.125000, -0.750000] no root, removed
+ Step 32: [-0.750000, 0.000000] split, stack size = 3
+ Step 33: [-0.750000, -0.375000] no root, removed
+ Step 34: [-0.375000, 0.000000] no root, removed
+ Step 35: [0.000000, 3.000000] split, stack size = 2
+ Step 36: [0.000000, 1.500000] split, stack size = 3
+ Step 37: [0.000000, 0.750000] split, stack size = 4
+ Step 38: [0.000000, 0.375000] split, stack size = 5
+ Step 39: [0.000000, 0.187500] no root, removed
+ Step 40: [0.187500, 0.375000] split, stack size = 5
+ Step 41: [0.187500, 0.281250] no root, removed
+ Step 42: [0.281250, 0.375000] split, stack size = 5
+ Step 43: [0.281250, 0.328125] no root, removed
+ Step 44: [0.328125, 0.375000] split, stack size = 5
+ Step 45: [0.328125, 0.351562] split, stack size = 6
+ Step 46: [0.328125, 0.339844] no root, removed
+ Step 47: [0.339844, 0.351562] split, stack size = 6
+ Step 48: [0.339844, 0.345703] no root, removed
+ Step 49: [0.345703, 0.351562] split, stack size = 6
+ Step 50: [0.345703, 0.348633] split, stack size = 7
+ Step 51: [0.345703, 0.347168] no root, removed
+ Step 52: [0.347168, 0.348633] split, stack size = 7
+ Step 53: [0.347168, 0.347900] root found at x = 0.347534
+ Step 54: [0.347900, 0.348633] no root, removed
+ Step 55: [0.348633, 0.351562] no root, removed
+ Step 56: [0.351562, 0.375000] no root, removed
+ Step 57: [0.375000, 0.750000] no root, removed
+ Step 58: [0.750000, 1.500000] split, stack size = 3
+ Step 59: [0.750000, 1.125000] no root, removed
+ Step 60: [1.125000, 1.500000] no root, removed
+ Step 61: [1.500000, 3.000000] split, stack size = 2
+ Step 62: [1.500000, 2.250000] split, stack size = 3
+ Step 63: [1.500000, 1.875000] split, stack size = 4
+ Step 64: [1.500000, 1.687500] split, stack size = 5
+ Step 65: [1.500000, 1.593750] split, stack size = 6
+ Step 66: [1.500000, 1.546875] split, stack size = 7
+ Step 67: [1.500000, 1.523438] no root, removed
+ Step 68: [1.523438, 1.546875] split, stack size = 7
+ Step 69: [1.523438, 1.535156] split, stack size = 8
+ Step 70: [1.523438, 1.529297] no root, removed
+ Step 71: [1.529297, 1.535156] split, stack size = 8
+ Step 72: [1.529297, 1.532227] split, stack size = 9
+ Step 73: [1.529297, 1.530762] no root, removed
+ Step 74: [1.530762, 1.532227] split, stack size = 9
+ Step 75: [1.530762, 1.531494] no root, removed
+ Step 76: [1.531494, 1.532227] root found at x = 1.531860
+ Step 77: [1.532227, 1.535156] no root, removed
+ Step 78: [1.535156, 1.546875] no root, removed
+ Step 79: [1.546875, 1.593750] no root, removed
+ Step 80: [1.593750, 1.687500] no root, removed
+ Step 81: [1.687500, 1.875000] no root, removed
+ Step 82: [1.875000, 2.250000] no root, removed
+ Step 83: [2.250000, 3.000000] split, stack size = 2
+ Step 84: [2.250000, 2.625000] no root, removed
+ Step 85: [2.625000, 3.000000] no root, removed
 
-  Step |      Popped interval        | Left | Action
- ------+-----------------------------+------+---------------------
-     1 | [ -3.00000000,  3.00000000] |    0 | split, push 2 halves
-     2 | [ -3.00000000,  0.00000000] |    1 | split, push 2 halves
-     3 | [ -3.00000000, -1.50000000] |    2 | split, push 2 halves
-     4 | [ -3.00000000, -2.25000000] |    3 | split, push 2 halves
-     5 | [ -3.00000000, -2.62500000] |    4 | no sign change, drop
-     6 | [ -2.62500000, -2.25000000] |    3 | no sign change, drop
-     7 | [ -2.25000000, -1.50000000] |    2 | split, push 2 halves
-     8 | [ -2.25000000, -1.87500000] |    3 | split, push 2 halves
-     9 | [ -2.25000000, -2.06250000] |    4 | no sign change, drop
-    10 | [ -2.06250000, -1.87500000] |    3 | split, push 2 halves
-    11 | [ -2.06250000, -1.96875000] |    4 | no sign change, drop
-    12 | [ -1.96875000, -1.87500000] |    3 | split, push 2 halves
-    13 | [ -1.96875000, -1.92187500] |    4 | no sign change, drop
-    14 | [ -1.92187500, -1.87500000] |    3 | split, push 2 halves
-    15 | [ -1.92187500, -1.89843750] |    4 | no sign change, drop
-    16 | [ -1.89843750, -1.87500000] |    3 | split, push 2 halves
-    17 | [ -1.89843750, -1.88671875] |    4 | no sign change, drop
-    18 | [ -1.88671875, -1.87500000] |    3 | split, push 2 halves
-    19 | [ -1.88671875, -1.88085938] |    4 | no sign change, drop
-    20 | [ -1.88085938, -1.87500000] |    3 | split, push 2 halves
-    21 | [ -1.88085938, -1.87792969] |    4 | split, push 2 halves
-    22 | [ -1.88085938, -1.87939453] |    5 | no sign change, drop
-    23 | [ -1.87939453, -1.87792969] |    4 | split, push 2 halves
-    24 | [ -1.87939453, -1.87866211] |    5 | ROOT  x = -1.8790283203
-    25 | [ -1.87866211, -1.87792969] |    4 | no sign change, drop
-    26 | [ -1.87792969, -1.87500000] |    3 | no sign change, drop
-    27 | [ -1.87500000, -1.50000000] |    2 | no sign change, drop
-    28 | [ -1.50000000,  0.00000000] |    1 | split, push 2 halves
-    29 | [ -1.50000000, -0.75000000] |    2 | split, push 2 halves
-    30 | [ -1.50000000, -1.12500000] |    3 | no sign change, drop
-    31 | [ -1.12500000, -0.75000000] |    2 | no sign change, drop
-    32 | [ -0.75000000,  0.00000000] |    1 | split, push 2 halves
-    33 | [ -0.75000000, -0.37500000] |    2 | no sign change, drop
-    34 | [ -0.37500000,  0.00000000] |    1 | no sign change, drop
-    35 | [  0.00000000,  3.00000000] |    0 | split, push 2 halves
-    36 | [  0.00000000,  1.50000000] |    1 | split, push 2 halves
-    37 | [  0.00000000,  0.75000000] |    2 | split, push 2 halves
-    38 | [  0.00000000,  0.37500000] |    3 | split, push 2 halves
-    39 | [  0.00000000,  0.18750000] |    4 | no sign change, drop
-    40 | [  0.18750000,  0.37500000] |    3 | split, push 2 halves
-    41 | [  0.18750000,  0.28125000] |    4 | no sign change, drop
-    42 | [  0.28125000,  0.37500000] |    3 | split, push 2 halves
-    43 | [  0.28125000,  0.32812500] |    4 | no sign change, drop
-    44 | [  0.32812500,  0.37500000] |    3 | split, push 2 halves
-    45 | [  0.32812500,  0.35156250] |    4 | split, push 2 halves
-    46 | [  0.32812500,  0.33984375] |    5 | no sign change, drop
-    47 | [  0.33984375,  0.35156250] |    4 | split, push 2 halves
-    48 | [  0.33984375,  0.34570312] |    5 | no sign change, drop
-    49 | [  0.34570312,  0.35156250] |    4 | split, push 2 halves
-    50 | [  0.34570312,  0.34863281] |    5 | split, push 2 halves
-    51 | [  0.34570312,  0.34716797] |    6 | no sign change, drop
-    52 | [  0.34716797,  0.34863281] |    5 | split, push 2 halves
-    53 | [  0.34716797,  0.34790039] |    6 | ROOT  x = 0.3475341797
-    54 | [  0.34790039,  0.34863281] |    5 | no sign change, drop
-    55 | [  0.34863281,  0.35156250] |    4 | no sign change, drop
-    56 | [  0.35156250,  0.37500000] |    3 | no sign change, drop
-    57 | [  0.37500000,  0.75000000] |    2 | no sign change, drop
-    58 | [  0.75000000,  1.50000000] |    1 | split, push 2 halves
-    59 | [  0.75000000,  1.12500000] |    2 | no sign change, drop
-    60 | [  1.12500000,  1.50000000] |    1 | no sign change, drop
-    61 | [  1.50000000,  3.00000000] |    0 | split, push 2 halves
-    62 | [  1.50000000,  2.25000000] |    1 | split, push 2 halves
-    63 | [  1.50000000,  1.87500000] |    2 | split, push 2 halves
-    64 | [  1.50000000,  1.68750000] |    3 | split, push 2 halves
-    65 | [  1.50000000,  1.59375000] |    4 | split, push 2 halves
-    66 | [  1.50000000,  1.54687500] |    5 | split, push 2 halves
-    67 | [  1.50000000,  1.52343750] |    6 | no sign change, drop
-    68 | [  1.52343750,  1.54687500] |    5 | split, push 2 halves
-    69 | [  1.52343750,  1.53515625] |    6 | split, push 2 halves
-    70 | [  1.52343750,  1.52929688] |    7 | no sign change, drop
-    71 | [  1.52929688,  1.53515625] |    6 | split, push 2 halves
-    72 | [  1.52929688,  1.53222656] |    7 | split, push 2 halves
-    73 | [  1.52929688,  1.53076172] |    8 | no sign change, drop
-    74 | [  1.53076172,  1.53222656] |    7 | split, push 2 halves
-    75 | [  1.53076172,  1.53149414] |    8 | no sign change, drop
-    76 | [  1.53149414,  1.53222656] |    7 | ROOT  x = 1.5318603516
-    77 | [  1.53222656,  1.53515625] |    6 | no sign change, drop
-    78 | [  1.53515625,  1.54687500] |    5 | no sign change, drop
-    79 | [  1.54687500,  1.59375000] |    4 | no sign change, drop
-    80 | [  1.59375000,  1.68750000] |    3 | no sign change, drop
-    81 | [  1.68750000,  1.87500000] |    2 | no sign change, drop
-    82 | [  1.87500000,  2.25000000] |    1 | no sign change, drop
-    83 | [  2.25000000,  3.00000000] |    0 | split, push 2 halves
-    84 | [  2.25000000,  2.62500000] |    1 | no sign change, drop
-    85 | [  2.62500000,  3.00000000] |    0 | no sign change, drop
-
- Intervals popped:   85
- Largest stack size: 9
- Roots found:        3
-
-  -------------------------------------
-  | # |       x        |     f(x)      |
-  -------------------------------------
-  | 1 |  -1.8790283203 |    2.7106e-03 |
-  | 2 |   0.3475341797 |   -6.2736e-04 |
-  | 3 |   1.5318603516 |   -9.2347e-04 |
-  -------------------------------------
+ Number of steps: 85
+ Number of roots found: 3
+ Root 1: x = -1.8790283203   f(x) = 2.710551e-03
+ Root 2: x = 0.3475341797   f(x) = -6.273587e-04
+ Root 3: x = 1.5318603516   f(x) = -9.234718e-04
 
