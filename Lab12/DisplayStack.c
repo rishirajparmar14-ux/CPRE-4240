@@ -1,28 +1,19 @@
 #include <stdio.h>
 #include "node.h"
 
-void DisplayStack(const node *top)
+void DisplayStack(const node* top)
 {
     if (top == NULL)
-    {
-        printf(" Stack is empty.\n");
-        return;
-    }
+    { printf(" Stack is empty.\n"); return; }
 
-    printf(" -------------------------------------------------------------------------\n");
-    printf(" |Pos:|     Left:     |    Right:     |     Address:     |      Next:       |\n");
-    printf(" -------------------------------------------------------------------------\n");
+    printf(" Pos   Left   Right\n");
     PrintNode(top);
-    printf(" -------------------------------------------------------------------------\n");
 }
 
-void PrintNode(const node *top)
+void PrintNode(const node* top)
 {
-    printf(" |%3i | %13.8f | %13.8f | %16p | %16p |\n",
-           top->position, top->left, top->right, (void *)top, (void *)top->next);
+    printf(" %i   %f   %f\n", top->position, top->left, top->right);
     if (top->next == NULL)
-    {
-        return;
-    }
+    { return; }
     PrintNode(top->next);
 }
