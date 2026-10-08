@@ -1,0 +1,13 @@
+
+ n = 128
+
+ sigma = 1e-04
+   no regularization: error = 4.598161e-02
+   lambda = 1e-04:     error = 2.856497e-02
+   lambda = 1e-02:     error = 5.279334e-02
+
+ sigma = 1e-02
+   no regularization: error = 1.285639e+01
+   lambda = 1e-04:     error = 2.675065e-01
+   lambda = 1e-02:     error = 7.470354e-02
+
