@@ -1,0 +1,67 @@
+
+ Stiffness matrix K:
+      2.0  -1.0   0.0   0.0
+     -1.0   2.0  -1.0   0.0
+      0.0  -1.0   2.0  -1.0
+      0.0   0.0  -1.0   2.0
+
+ Power iteration
+   iterations = 45
+   lambda     = 3.618034
+   omega      = 1.902113
+   mode shape =   0.371748 -0.601501  0.601501 -0.371748
+
+ Shifted inverse power iteration (mu = 0.0)
+   iterations = 13
+   lambda     = 0.381966
+   omega      = 0.618034
+   mode shape =   0.371748  0.601501  0.601501  0.371748
+
+ Shifted inverse power iteration (mu = 1.2)
+   iterations = 10
+   lambda     = 1.381966
+   omega      = 1.175571
+   mode shape =   0.601501  0.371748 -0.371748 -0.601501
+
+ Shifted inverse power iteration (mu = 2.8)
+   iterations = 10
+   lambda     = 2.618034
+   omega      = 1.618034
+   mode shape =   0.601501 -0.371748 -0.371748  0.601501
+
+ Shifted inverse power iteration (mu = 3.5)
+   iterations = 9
+   lambda     = 3.618034
+   omega      = 1.902113
+   mode shape =   0.371748 -0.601501  0.601501 -0.371748
+
+ Rayleigh quotient iteration (start vector 1)
+   iterations = 3
+   lambda     = 0.381966
+   omega      = 0.618034
+   mode shape =   0.371748  0.601501  0.601501  0.371748
+
+ Rayleigh quotient iteration (start vector 2)
+   iterations = 4
+   lambda     = 1.381966
+   omega      = 1.175571
+   mode shape =   0.601501  0.371748 -0.371748 -0.601501
+
+ Rayleigh quotient iteration (start vector 3)
+   iterations = 4
+   lambda     = 2.618034
+   omega      = 1.618034
+   mode shape =  -0.601501  0.371748  0.371748 -0.601501
+
+ Rayleigh quotient iteration (start vector 4)
+   iterations = 3
+   lambda     = 3.618034
+   omega      = 1.902113
+   mode shape =  -0.371748  0.601501 -0.601501  0.371748
+
+ Exact eigenvalues
+   lambda_1 = 0.381966
+   lambda_2 = 1.381966
+   lambda_3 = 2.618034
+   lambda_4 = 3.618034
+
