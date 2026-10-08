@@ -67,7 +67,6 @@ int main()
     
     FILE *outfile = fopen("exp.data", "w");
 
-   
     for (int i = 0; i < np; i++)
     {
         fprintf(outfile, " %23.16e %23.16e\n", x[i], y[i]);
