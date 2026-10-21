@@ -1,0 +1,8 @@
+.\main.exe 1 5000
+ N = 5000, With 1 threads, clock_time = 5.70002e-02 (sec)
+.\main.exe 2 5000
+ N = 5000, With 2 threads, clock_time = 5.60000e-02 (sec)
+.\main.exe 4 5000
+ N = 5000, With 4 threads, clock_time = 4.60000e-02 (sec)
+.\main.exe 8 5000
+ N = 5000, With 8 threads, clock_time = 4.40001e-02 (sec)
