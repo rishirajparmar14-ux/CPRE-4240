@@ -1,63 +1,57 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <mpi.h>
 
-// Pass a Baton (Lecture 21: Introduction to MPI)
-//   Rank 0 starts a token = 1000 and sends it to Rank 1.
-//   Each rank r (1 <= r <= size-1) receives the token from rank r-1,
-//   increments it by 1, and sends it to rank (r+1) % size.
-//   The last rank (size-1) therefore sends the token back to Rank 0,
-//   which prints the final value: 1000 + (size-1).
+// Lab 21: Pass a Baton
+// Rank 0 starts the token at 1000 and passes it around the ring.
+// Each rank adds 1 and passes it on, last rank sends it back to rank 0.
 
 int main()
 {
-   int comm_sz;  // number of processors
-   int my_rank;  // current processor
+   int comm_sz; // number of processors
+   int my_rank; // current processor
+   int token;
 
    MPI_Init(NULL,NULL);
    MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
+   // need at least 2 processes to pass the token
    if (comm_sz < 2)
    {
       if (my_rank==0)
-      { fprintf(stderr,"Error: run with at least 2 processes (mpiexec -n 4 ...)\n"); }
+      { printf("Run with at least 2 processes\n"); }
       MPI_Finalize();
       return 1;
    }
 
-   const int next = (my_rank+1) % comm_sz;           // who I send to
-   const int prev = (my_rank-1+comm_sz) % comm_sz;   // who I receive from
-   int token;
-
-   if (my_rank==0)
+   if (my_rank == 0)
    {
-      // Start: Rank 0 initializes the token and makes the first pass
       token = 1000;
-      MPI_Send(&token,1,MPI_INT,next,0,MPI_COMM_WORLD);
-      printf("Rank %d sent token %d to Rank %d\n",my_rank,token,next);
-      fflush(stdout);
+      MPI_Send(&token,1,MPI_INT,1,0,MPI_COMM_WORLD);
+      printf("Rank %d sent token %d to Rank %d\n",my_rank,token,1);
 
-      // Completion: wait for the token to come back around the ring
-      MPI_Recv(&token,1,MPI_INT,prev,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-      printf("Rank %d received token %d from Rank %d\n",my_rank,token,prev);
-      printf("Rank 0: final token = %d (expected %d) -> %s\n",
-             token, 1000+(comm_sz-1),
-             token==1000+(comm_sz-1) ? "full trip verified" : "MISMATCH");
-      fflush(stdout);
+      // wait for the token to come back from the last rank
+      MPI_Recv(&token,1,MPI_INT,comm_sz-1,0,
+               MPI_COMM_WORLD,MPI_STATUS_IGNORE);
+      printf("Rank %d received token %d from Rank %d\n",
+             my_rank,token,comm_sz-1);
+      printf("Final token = %d\n",token);
    }
    else
    {
-      // The Pass: receive from previous rank, increment, forward to next rank
-      MPI_Recv(&token,1,MPI_INT,prev,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-      printf("Rank %d received token %d from Rank %d\n",my_rank,token,prev);
-      fflush(stdout);
+      MPI_Recv(&token,1,MPI_INT,my_rank-1,0,
+               MPI_COMM_WORLD,MPI_STATUS_IGNORE);
+      printf("Rank %d received token %d from Rank %d\n",
+             my_rank,token,my_rank-1);
 
-      token += 1;
+      token = token + 1;
 
-      MPI_Send(&token,1,MPI_INT,next,0,MPI_COMM_WORLD);
-      printf("Rank %d sent token %d to Rank %d\n",my_rank,token,next);
-      fflush(stdout);
+      // last rank sends back to rank 0
+      int dest = (my_rank+1) % comm_sz;
+      MPI_Send(&token,1,MPI_INT,dest,0,MPI_COMM_WORLD);
+      printf("Rank %d sent token %d to Rank %d\n",my_rank,token,dest);
    }
 
    MPI_Finalize();
