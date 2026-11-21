@@ -1,4 +1,4 @@
-region,stations,avg_trend_C_per_decade,avg_warming_C,hot_days_per_year_1951_1980,hot_days_per_year_1996_2025,hot_days_change
+region,stations,trend,warming,hot_before,hot_now,hot_change
 US-CA,1,0.184,0.76,98.30,113.41,+15.11
 US-CO,1,0.311,1.49,1.93,6.07,+4.14
 US-IN,1,0.202,1.19,1.55,0.82,-0.73

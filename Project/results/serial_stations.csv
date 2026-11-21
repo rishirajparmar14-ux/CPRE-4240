@@ -1,4 +1,4 @@
-station,region,used,good_years,trend_C_per_decade,mean_C_1951_1980,mean_C_1996_2025,hot_days_1951_1980,hot_days_1996_2025
+station,region,used,years,trend,temp_before,temp_now,hot_before,hot_now
 USC00010178,US-AL,no,30,0.0000,0.000,0.000,0.00,0.00
 USC00041715,US-CA,no,41,0.0000,0.000,0.000,0.00,0.00
 USC00053005,US-CO,yes,72,0.3107,9.150,10.636,1.93,6.07

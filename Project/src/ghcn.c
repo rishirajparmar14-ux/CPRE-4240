@@ -195,10 +195,15 @@ int write_results(const char *prefix, const StationResult *results, int n,
     snprintf(path, sizeof path, "%s_stations.csv", prefix);
     FILE *f = fopen(path, "w");
     if (!f) { perror(path); return -1; }
-    fprintf(f, "station,region,used,good_years,trend_C_per_decade,"
-               "mean_C_%d_%d,mean_C_%d_%d,hot_days_%d_%d,hot_days_%d_%d\n",
-            EARLY_START, EARLY_END, LATE_START, LATE_END,
-            EARLY_START, EARLY_END, LATE_START, LATE_END);
+    /* Column names:
+     *   years       = number of complete years
+     *   trend       = warming in degrees C per decade
+     *   temp_before = average temperature 1951-1980 (C)
+     *   temp_now    = average temperature 1996-2025 (C)
+     *   hot_before  = days above 35 C per year, 1951-1980
+     *   hot_now     = days above 35 C per year, 1996-2025 */
+    fprintf(f, "station,region,used,years,trend,temp_before,temp_now,"
+               "hot_before,hot_now\n");
     for (int i = 0; i < n; i++) {
         const StationResult *r = &results[i];
         fprintf(f, "%s,%s,%s,%d,%.4f,%.3f,%.3f,%.2f,%.2f\n",
@@ -212,9 +217,13 @@ int write_results(const char *prefix, const StationResult *results, int n,
     snprintf(path, sizeof path, "%s_regions.csv", prefix);
     f = fopen(path, "w");
     if (!f) { perror(path); return -1; }
-    fprintf(f, "region,stations,avg_trend_C_per_decade,avg_warming_C,"
-               "hot_days_per_year_%d_%d,hot_days_per_year_%d_%d,hot_days_change\n",
-            EARLY_START, EARLY_END, LATE_START, LATE_END);
+    /* Column names (averages over the stations in each region):
+     *   trend      = warming in degrees C per decade
+     *   warming    = temperature change from 1951-1980 to 1996-2025 (C)
+     *   hot_before = days above 35 C per year, 1951-1980
+     *   hot_now    = days above 35 C per year, 1996-2025
+     *   hot_change = hot_now - hot_before */
+    fprintf(f, "region,stations,trend,warming,hot_before,hot_now,hot_change\n");
     for (int r = 0; r < num_regions; r++) {
         const double *t = totals + r * R_FIELDS;
         if (t[R_COUNT] == 0) continue;
