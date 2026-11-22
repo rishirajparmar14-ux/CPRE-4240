@@ -6,3 +6,5 @@ select_stations
 climate_serial
 climate_mpi
 *.o
+# output CSVs and logs - regenerate them by running the programs
+results/
