@@ -1,0 +1,4 @@
+2502 stations, 50 regions, 32 processes (31 workers), chunk 64
+Stations used: 1634 of 2502
+Work per rank: min 0.097 s, avg 0.145 s, max 0.224 s
+Time: 0.224 seconds

@@ -1,0 +1,10 @@
+# NOAA data is large - download it again instead of storing it on GitHub
+data/
+# compiled programs
+hello
+select_stations
+climate_serial
+climate_mpi
+*.o
+# output CSVs and logs - regenerate them by running the programs
+results/

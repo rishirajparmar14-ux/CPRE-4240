@@ -1,0 +1,158 @@
+Job 17749409 on nova22-28, Tue Nov 24 03:50:49 PM CST 2026
+Stations in stations_all.txt: 2502
+=== warm-up: np 8 (not recorded) ===
+2502 stations, 50 regions, 8 processes
+Stations used: 1634 of 2502
+Work per rank: min 3.085 s, avg 3.320 s, max 3.818 s
+Time: 3.819 seconds
+=== serial, run 1 ===
+2502 stations, 50 regions
+Stations used: 1634 of 2502
+Time: 3.823 seconds
+=== serial, run 2 ===
+2502 stations, 50 regions
+Stations used: 1634 of 2502
+Time: 3.816 seconds
+=== serial, run 3 ===
+2502 stations, 50 regions
+Stations used: 1634 of 2502
+Time: 3.787 seconds
+=== mpi, np 1, run 1 ===
+2502 stations, 50 regions, 1 processes
+Stations used: 1634 of 2502
+Work per rank: min 3.821 s, avg 3.821 s, max 3.821 s
+Time: 3.821 seconds
+=== mpi, np 1, run 2 ===
+2502 stations, 50 regions, 1 processes
+Stations used: 1634 of 2502
+Work per rank: min 3.780 s, avg 3.780 s, max 3.780 s
+Time: 3.780 seconds
+=== mpi, np 1, run 3 ===
+2502 stations, 50 regions, 1 processes
+Stations used: 1634 of 2502
+Work per rank: min 3.744 s, avg 3.744 s, max 3.744 s
+Time: 3.744 seconds
+np 1: SAME as serial
+=== mpi, np 2, run 1 ===
+2502 stations, 50 regions, 2 processes
+Stations used: 1634 of 2502
+Work per rank: min 1.855 s, avg 1.878 s, max 1.900 s
+Time: 1.900 seconds
+=== mpi, np 2, run 2 ===
+2502 stations, 50 regions, 2 processes
+Stations used: 1634 of 2502
+Work per rank: min 1.857 s, avg 1.879 s, max 1.901 s
+Time: 1.901 seconds
+=== mpi, np 2, run 3 ===
+2502 stations, 50 regions, 2 processes
+Stations used: 1634 of 2502
+Work per rank: min 1.846 s, avg 1.872 s, max 1.898 s
+Time: 1.898 seconds
+np 2: SAME as serial
+=== mpi, np 4, run 1 ===
+2502 stations, 50 regions, 4 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.904 s, avg 0.943 s, max 0.971 s
+Time: 0.971 seconds
+=== mpi, np 4, run 2 ===
+2502 stations, 50 regions, 4 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.928 s, avg 0.947 s, max 0.979 s
+Time: 0.979 seconds
+=== mpi, np 4, run 3 ===
+2502 stations, 50 regions, 4 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.932 s, avg 0.948 s, max 0.982 s
+Time: 0.982 seconds
+np 4: SAME as serial
+=== mpi, np 8, run 1 ===
+2502 stations, 50 regions, 8 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.440 s, avg 0.474 s, max 0.508 s
+Time: 0.508 seconds
+=== mpi, np 8, run 2 ===
+2502 stations, 50 regions, 8 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.439 s, avg 0.465 s, max 0.506 s
+Time: 0.506 seconds
+=== mpi, np 8, run 3 ===
+2502 stations, 50 regions, 8 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.436 s, avg 0.473 s, max 0.502 s
+Time: 0.503 seconds
+np 8: SAME as serial
+=== mpi, np 16, run 1 ===
+2502 stations, 50 regions, 16 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.209 s, avg 0.240 s, max 0.278 s
+Time: 0.278 seconds
+=== mpi, np 16, run 2 ===
+2502 stations, 50 regions, 16 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.202 s, avg 0.239 s, max 0.268 s
+Time: 0.268 seconds
+=== mpi, np 16, run 3 ===
+2502 stations, 50 regions, 16 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.217 s, avg 0.251 s, max 0.319 s
+Time: 0.319 seconds
+np 16: SAME as serial
+=== mpi, np 32, run 1 ===
+2502 stations, 50 regions, 32 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.109 s, avg 0.128 s, max 0.210 s
+Time: 0.211 seconds
+=== mpi, np 32, run 2 ===
+2502 stations, 50 regions, 32 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.109 s, avg 0.127 s, max 0.191 s
+Time: 0.192 seconds
+=== mpi, np 32, run 3 ===
+2502 stations, 50 regions, 32 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.103 s, avg 0.142 s, max 0.212 s
+Time: 0.212 seconds
+np 32: SAME as serial
+=== mpi, np 64, run 1 ===
+2502 stations, 50 regions, 64 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.056 s, avg 0.086 s, max 0.133 s
+Time: 0.133 seconds
+=== mpi, np 64, run 2 ===
+2502 stations, 50 regions, 64 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.048 s, avg 0.085 s, max 0.117 s
+Time: 0.117 seconds
+=== mpi, np 64, run 3 ===
+2502 stations, 50 regions, 64 processes
+Stations used: 1634 of 2502
+Work per rank: min 0.058 s, avg 0.089 s, max 0.117 s
+Time: 0.118 seconds
+np 64: SAME as serial
+Done at Tue Nov 24 03:52:05 PM CST 2026
+--- results/timings.csv ---
+version,processes,run,time_s,work_min_s,work_avg_s,work_max_s
+serial,1,1,3.823,,,
+serial,1,2,3.816,,,
+serial,1,3,3.787,,,
+mpi,1,1,3.821,3.821,3.821,3.821
+mpi,1,2,3.780,3.780,3.780,3.780
+mpi,1,3,3.744,3.744,3.744,3.744
+mpi,2,1,1.900,1.855,1.878,1.900
+mpi,2,2,1.901,1.857,1.879,1.901
+mpi,2,3,1.898,1.846,1.872,1.898
+mpi,4,1,0.971,0.904,0.943,0.971
+mpi,4,2,0.979,0.928,0.947,0.979
+mpi,4,3,0.982,0.932,0.948,0.982
+mpi,8,1,0.508,0.440,0.474,0.508
+mpi,8,2,0.506,0.439,0.465,0.506
+mpi,8,3,0.503,0.436,0.473,0.502
+mpi,16,1,0.278,0.209,0.240,0.278
+mpi,16,2,0.268,0.202,0.239,0.268
+mpi,16,3,0.319,0.217,0.251,0.319
+mpi,32,1,0.211,0.109,0.128,0.210
+mpi,32,2,0.192,0.109,0.127,0.191
+mpi,32,3,0.212,0.103,0.142,0.212
+mpi,64,1,0.133,0.056,0.086,0.133
+mpi,64,2,0.117,0.048,0.085,0.117
+mpi,64,3,0.118,0.058,0.089,0.117

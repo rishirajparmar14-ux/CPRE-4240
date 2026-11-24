@@ -1,0 +1,68 @@
+Node: nova22-28, started Tue Nov 24 04:08:34 PM CST 2026
+static np=8 chunk=- run=1: 0.510 s  (work min/avg/max: 0.452,0.479,0.510)
+   SAME as serial
+dynamic np=8 chunk=4 run=1: 0.550 s  (work min/avg/max: 0.544,0.547,0.549)
+   SAME as serial
+static np=8 chunk=- run=2: 0.501 s  (work min/avg/max: 0.442,0.466,0.501)
+   SAME as serial
+dynamic np=8 chunk=4 run=2: 0.566 s  (work min/avg/max: 0.560,0.563,0.565)
+   SAME as serial
+static np=8 chunk=- run=3: 0.505 s  (work min/avg/max: 0.442,0.472,0.505)
+   SAME as serial
+dynamic np=8 chunk=4 run=3: 0.558 s  (work min/avg/max: 0.553,0.556,0.558)
+   SAME as serial
+static np=16 chunk=- run=1: 0.337 s  (work min/avg/max: 0.205,0.272,0.336)
+   SAME as serial
+dynamic np=16 chunk=4 run=1: 0.264 s  (work min/avg/max: 0.257,0.260,0.264)
+   SAME as serial
+static np=16 chunk=- run=2: 0.342 s  (work min/avg/max: 0.217,0.250,0.342)
+   SAME as serial
+dynamic np=16 chunk=4 run=2: 0.273 s  (work min/avg/max: 0.265,0.268,0.272)
+   SAME as serial
+static np=16 chunk=- run=3: 0.279 s  (work min/avg/max: 0.213,0.241,0.279)
+   SAME as serial
+dynamic np=16 chunk=4 run=3: 0.277 s  (work min/avg/max: 0.270,0.273,0.277)
+   SAME as serial
+static np=32 chunk=- run=1: 0.222 s  (work min/avg/max: 0.103,0.143,0.222)
+   SAME as serial
+dynamic np=32 chunk=4 run=1: 0.143 s  (work min/avg/max: 0.132,0.135,0.143)
+   SAME as serial
+static np=32 chunk=- run=2: 0.206 s  (work min/avg/max: 0.102,0.138,0.206)
+   SAME as serial
+dynamic np=32 chunk=4 run=2: 0.150 s  (work min/avg/max: 0.142,0.145,0.149)
+   SAME as serial
+static np=32 chunk=- run=3: 0.219 s  (work min/avg/max: 0.104,0.138,0.219)
+   SAME as serial
+dynamic np=32 chunk=4 run=3: 0.144 s  (work min/avg/max: 0.134,0.138,0.144)
+   SAME as serial
+static np=64 chunk=- run=1: 0.121 s  (work min/avg/max: 0.048,0.084,0.120)
+   SAME as serial
+dynamic np=64 chunk=4 run=1: 0.096 s  (work min/avg/max: 0.081,0.085,0.095)
+   SAME as serial
+static np=64 chunk=- run=2: 0.117 s  (work min/avg/max: 0.056,0.088,0.116)
+   SAME as serial
+dynamic np=64 chunk=4 run=2: 0.093 s  (work min/avg/max: 0.079,0.083,0.093)
+   SAME as serial
+static np=64 chunk=- run=3: 0.121 s  (work min/avg/max: 0.060,0.087,0.120)
+   SAME as serial
+dynamic np=64 chunk=4 run=3: 0.095 s  (work min/avg/max: 0.082,0.086,0.094)
+   SAME as serial
+dynamic np=32 chunk=1 run=1: 0.138 s  (work min/avg/max: 0.134,0.136,0.137)
+   SAME as serial
+dynamic np=32 chunk=1 run=2: 0.137 s  (work min/avg/max: 0.133,0.135,0.137)
+   SAME as serial
+dynamic np=32 chunk=1 run=3: 0.141 s  (work min/avg/max: 0.137,0.139,0.141)
+   SAME as serial
+dynamic np=32 chunk=16 run=1: 0.152 s  (work min/avg/max: 0.125,0.133,0.152)
+   SAME as serial
+dynamic np=32 chunk=16 run=2: 0.142 s  (work min/avg/max: 0.124,0.131,0.141)
+   SAME as serial
+dynamic np=32 chunk=16 run=3: 0.165 s  (work min/avg/max: 0.126,0.134,0.164)
+   SAME as serial
+dynamic np=32 chunk=64 run=1: 0.226 s  (work min/avg/max: 0.100,0.134,0.225)
+   SAME as serial
+dynamic np=32 chunk=64 run=2: 0.222 s  (work min/avg/max: 0.097,0.132,0.222)
+   SAME as serial
+dynamic np=32 chunk=64 run=3: 0.224 s  (work min/avg/max: 0.097,0.145,0.224)
+   SAME as serial
+Finished Tue Nov 24 04:09:48 PM CST 2026
